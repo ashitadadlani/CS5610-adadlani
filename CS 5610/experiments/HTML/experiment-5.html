@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/mystyle.css" />
+    <style>
+        #div1 {
+            width: 350px;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+            margin-left:150px;
+        }
+        #pid-1, img{
+            margin-left:150px;
+        }
+    </style>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <h1>HTML 5: Drag and Drop</h1>
+    <p id="pid-1">Drag the image into the rectangle:</p>
+
+    <img id="drag1" src="../../images/MyImages/sampleimage.png" draggable="true"
+         ondragstart="drag(event)" width="200" height="120">
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <hr />
+    <h2>Experiment Details</h2>
+    <p>The experiment demonstrates dragging and dropping an image over another.</p>
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/html/experiment-5.html" target="_blank">Source Code</a>
+</body>
+</html>

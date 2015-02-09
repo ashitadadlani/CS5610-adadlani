@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Forms</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/mystyle.css"/>
+</head>
+<body>
+    <h1>HTML 5: Forms</h1>
+    <form action="experiment-2.html">
+        <fieldset>
+            <legend><b>Personal Information</b></legend>
+            First Name:
+            <br />
+            <input type="text" name="firstname" maxlength="10" /><br />
+            Last Name: <br />
+            <input type="text" name="lastname" /><br />
+            Email:<br /><input type="email" name="email" placeholder="abc@xyz.com" /><br />
+            Password: <br />
+            <input type="password" name="passwd" required /><br /><br />
+            Upload resume:
+            <input type="file" name="pdf"><br /><br />
+            <input type="submit" value="Next" />
+        </fieldset>
+    </form>
+    <br /><hr />
+    <h2>Experiment Details</h2>
+
+    <p>
+    <b>&lt;form&gt;</b>element defines HTML forms. The attribute <b>action</b> navigates to the page after 
+    clicking submit on the current form.<b>&lt;fieldset&gt;</b> is used to group related elements in a form by drawing a box 
+    around the related elements.
+    <b>&lt;legend&gt;</b>defines a caption for the &lt;fieldset&gt; element.
+    <b>&lt;input&gt;</b>specifies an input field where the user can enter data.The attribute 'text' allows to enter text inputs
+    to the field element.'Placeholder' attribute specifies a hint to the value to be entered to the field. 
+    'Required' makes the field mandatory. Type 'Submit' allows to submit the form and move to the following page</p>
+
+    <h3>Code Snippet</h3>
+    <span>
+        &lt;form action=&quot;experiment-2.html&quot;&gt;<br />
+        &lt;fieldset&gt;<br />
+        &lt;legend&gt; Personal Information &lt;/legend&gt;<br />
+        First Name:&lt;input type=&quot;text&quot; name=&quot;firstname&quot; maxlength=&quot;10&quot;&gt;<br />
+        Email:&lt;input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;abc@xyz.com&quot;&gt;<br />
+        Password: &lt;input type=&quot;password&quot; name=&quot;passwd&quot; required&gt;<br />
+        &lt;/fieldset&gt;<br />
+        &lt;/form&gt;<br />
+    </span>
+         
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/html/experiment-1.html" target="_blank">Source Code</a>
+
+</body>
+</html>

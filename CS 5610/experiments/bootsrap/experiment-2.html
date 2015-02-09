@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration Link</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bootsrap forms</h1>
+        <p>We are creating forms using bootsrap. These inputs are how they will look on a mobile screen.</p>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="firstName">First Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2" for="sel2">Language spoken (hold shift to select more than one):</label>
+                <div class="col-sm-10">
+                    <select multiple class="form-control" id="sel2">
+                        <option>English</option>
+                        <option>French</option>
+                        <option>Spanish</option>
+                        <option>Hindi</option>
+                        <option>Chinese</option>
+                    </select>
+                </div>
+                </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="comment">Comment:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                   
+                </div>
+                </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="container">
+        <hr />
+        <h3><b>Experiment Details</b></h3>
+        <p>
+            All textual elements, &lt;input&gt;, &lt;textarea&gt;, &lt;select&gt; with class .form-control have default width 100
+            (as bootsrap works for mobile first).
+        </p>
+        <h3><b>Code Snippet</b></h3>
+        <span>
+            &lt; class="form-horizontal" role="form"&gt;<br />
+            &lt;div class="form-group"&gt;<br />
+            &lt;label class="control-label col-sm-2" for="firstName"&gt;<br />First Name:&lt;/label&gt;<br />
+            &lt;div class="col-sm-10"&gt;<br />
+            &lt;input type="text" class="form-control" id="firstName" placeholder="Enter Name"&gt;<br />
+            &lt;/div&gt;<br />
+            &lt;/div&gt;<br />
+            &lt;/form&gt;<br />
+        </span>
+        <h3><b>Source Code</b></h3>
+        <a href="../../fileview/Default.aspx?~/experiments/bootsrap/experiment-2.html" target="_blank">View Source Code</a><br />
+        </div>
+</body>
+</html>

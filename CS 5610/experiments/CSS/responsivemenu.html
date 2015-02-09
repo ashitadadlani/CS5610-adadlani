@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Responsive Design</title>
+    <link rel="stylesheet" type="text/css" href="responsive-menu.css" />
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Responsive Menu</h1>
+            <a href="#menu" id="menu-link">Menu</a>
+            <nav>
+                <a href="#">Home</a> |
+                <a href="#">Contact Us</a> |
+                <a href="#">About Us</a> |
+                <a href="#">Jobs</a> |
+                <a href="#">Search</a> |
+                <a href="#">Profile</a> |
+                <a href="#">Other</a>
+            </nav>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col-6">
+                    A privacy policy is a statement or a legal document (privacy law) that discloses some or all of the ways a party gathers, uses, discloses and manages a customer or client's data. Personal information can be anything that can be used to identify an individual, not limited to but including name, address, date of birth, marital status, contact information, ID issue and expiry date, financial records, credit information, medical history, where one travels, and intentions to acquire goods and services.[1] In the case of a business it is often a statement that declares a party's policy on how it collects, stores, and releases personal information it collects. It informs the client what specific information is collected, and whether it is kept confidential, shared with partners, or sold to other firms or enterprises
+                </div>
+                <div class="col-6">
+                    A privacy policy is a statement or a legal document (privacy law) that discloses some or all of the ways a party gathers, uses, discloses and manages a customer or client's data. Personal information can be anything that can be used to identify an individual, not limited to but including name, address, date of birth, marital status, contact information, ID issue and expiry date, financial records, credit information, medical history, where one travels, and intentions to acquire goods and services.[1] In the case of a business it is often a statement that declares a party's policy on how it collects, stores, and releases personal information it collects. It informs the client what specific information is collected, and whether it is kept confidential, shared with partners, or sold to other firms or enterprises
+                </div>
+            </div>
+
+
+
+
+            <div class="field-group">
+                <label class="field-label">Field Label:</label>
+                <div class="field">
+                    <input class="field" />
+                </div>
+            </div>
+            <p>A privacy policy is a statement or a legal document (privacy law) that discloses some or all of the ways a party gathers, uses, discloses and manages a customer or client's data. Personal information can be anything that can be used to identify an individual, not limited to but including name, address, date of birth, marital status, contact information, ID issue and expiry date, financial records, credit information, medical history, where one travels, and intentions to acquire goods and services.[1] In the case of a business it is often a statement that declares a party's policy on how it collects, stores, and releases personal information it collects. It informs the client what specific information is collected, and whether it is kept confidential, shared with partners, or sold to other firms or enterprises</p>
+            <p>The exact contents of a privacy policy will depend upon the applicable law and may need to address requirements across geographical boundaries and legal jurisdictions. Most countries have their own legislation and guidelines of who is covered, what information can be collected, and what it can be used for. In general, data protection laws in Europe cover the private sector as well as the public sector. Their privacy laws apply not only to government operations but also to private enterprises and commercial transactions</p>
+            <p>In 1968, the Council of Europe began to study the effects of technology on human rights, recognizing the new threats posed by computer technology that could link and transmit in ways not widely available before. As well, in 1969 the Organisation for Economic Co-operation and Development (OECD) began to examine the implications of personal information leaving the country. All this led council to recommend that policy be developed to protect personal data held by both the private and public sectors, leading to Convention 108. In 1981, Convention for the Protection of Individuals with regard to Automatic Processing of Personal Data(Convention 108) was introduced. One of the first privacy laws ever enacted was the Swedish Data Act in 1973, followed by the West German Data Protection Act in 1977 and the French Law on Informatics, Data Banks and Freedoms in 1978</p>
+            <p>In the United States, concern over privacy policy started around the late 1960s and 1970s saw the passage of the Fair Credit Reporting Act. Although this act was not designed to be a privacy law, the act gave consumers the opportunity to examine their credit files and correct errors. It also placed restrictions on the use of information in credit records. Several congressional study groups in the late 1960s examined the growing ease with which automated personal information could be gathered and matched with other information. One such group was an advisory committee of the United States Department of Health and Human Services which in 1973 drafted a code of principles called the Fair Information Practices. The work of the advisory committee led to the Privacy Act in 1974. The United States signed the Organisation for Economic Co-operation and Development guidelines in 1980.</p>
+            <a name="menu">
+                <nav id="small-menu">
+                    <a href="#">Home</a><br />
+                    <a href="#">Contact Us</a><br />
+                    <a href="#">About Us</a><br />
+                    <a href="#">Jobs</a><br />
+                    <a href="#">Search</a><br />
+                    <a href="#">Profile</a><br />
+                    <a href="#">Other</a>
+                </nav>
+            </a>
+        </main>
+    </div>
+    <hr />
+    <h2>Experiment Details</h2>
+    <p>
+        The experiment implements responsive design using @media tag. The contents in HTML page responds to the change in the
+        screen size. For a specific screen of size, width = 500px, fixed header is provided. For all the other sizes, the header
+        can be moved.
+    </p>
+    <h2>Code Snippet</h2>
+    <span>
+        @media screen and (max-width: 500px) {<br />
+        body header{<br />
+        position:fixed;<br />
+        background-color:red;<br />
+        width: 600px;<br />
+        }<br />
+        main{<br />
+        padding-top:110px;<br />
+        }<br />
+        body {<br />
+        background-color: red;<br />
+        }<br />
+        body header nav{<br />
+        display:none;<br />
+        }<br />
+        #menu-link, #small-menu{<br />
+        display:inline;<br />
+        }<br />
+        .container{<br />
+        width:400px;<br />
+        margin:auto;<br />
+        }<br />
+        }
+    </span>
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/css/responsivemenu.html" target="_blank">HTML Code</a><br />
+    <a href="../../fileview/Default.aspx?~/experiments/css/responsive-menu.css" target="_blank">CSS Code</a>
+    <hr />
+</body>
+</html>

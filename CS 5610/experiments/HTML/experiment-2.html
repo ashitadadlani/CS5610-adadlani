@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Options</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/mystyle.css" />
+</head>
+<body>
+    <h1>HTML 5: Radio buttons, DataList, Checklist</h1>
+    <form action="experiment-3.html">
+        <fieldset>
+            <legend><b>Educational Information</b></legend>
+            School Name: <input list="school" name="school">
+            <datalist id="school">
+                <option value="Carnegie Mellon University"></option>
+                <option value="Boston University"></option>
+                <option value="Northeastern University"></option>
+                <option value="Stanford University"></option>
+                <option value="Harvard University"></option>
+                <option value="UMass Amherst"></option>
+            </datalist><br /><br />
+
+            Field of Study: <select name="study">
+                <option value=""></option>
+                <option value="Arts and Sciences">Arts and Sciences</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Journalism">Journalism</option>
+                <option value="Other">Other</option>
+            </select><br /><br />
+            Duration of course (between 1 and 5):
+            <input type="number" name="quantity" min="1" max="5" value="1"><br /><br />
+            GPA:
+            <input type="text" name="gpa" min="0" max="4">/4.0<br /><br />
+
+            Graduation Date:
+            <input type="month" name="month" placeholder="mm/yy" /><br /><br />
+            Rating of College:
+            0<input type="range" name="rating" min="0" max="10" value="10" />10
+            <br />
+
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend><b>Additional Information</b></legend>
+            Sex:
+            <br /><input type="radio" name="sex" value="male" checked>Male
+            <br>
+            <input type="radio" name="sex" value="female">Female
+            <br /><br />
+            Date of Submission:
+            <input type="date" name="date" placeholder="dd/mm/yy"><br /><br />
+            Time of Submission:
+            <input type="time" name="time" /><br /><br />
+            Type of Visa:<br />
+            <input type="checkbox" name="F1" value="F1">F1<br />
+            <input type="checkbox" name="H1B" value="H1B">H1B<br />
+            <input type="checkbox" name="L1" value="L1">L1<br />
+            <input type="checkbox" name="Permanent Resident" value="Permanent Resident">Permanent Resident<br />
+            <input type="checkbox" name="Other" value="Other">Other<br /><br />
+
+        </fieldset>
+        <br /><br />
+        <input type="submit" value="Next" />
+    </form>
+    
+    <br /><hr />
+    <h2>Experiment Details</h2>
+    <p>
+        The <b>&lt;datalist&gt;</b>; element specifies a list with pre-defined option for &lt;input&gt; element.The user
+        can type in a new value or select from the existing list of options. <b>&lt;option&gt;</b> is used to define the values 
+        for pre-defined options in datalist.
+
+        <h3>Code Snippet</h3>
+        <span>
+            &lt;datalist id=&quot;school&quot;&gt;<br />
+            &lt;option value=&quot;Carnegie Mellon University&quot;&gt;&lt;/option&gt;<br />
+            &lt;option value=&quot;Boston University&quot;&gt;&lt;/option&gt;<br />
+            &lt;option value=&quot;Northeastern University&quot;&gt;&lt;/option&gt;<br />
+            &lt;option value=&quot;Stanford University&quot;&gt;&lt;/option&gt;<br />
+            &lt;option value=&quot;Harvard University&quot;&gt;&lt;/option&gt;<br />
+            &lt;option value=&quot;UMass Amherst&quot;&gt;&lt;/option&gt;<br />
+            &lt;/datalist&gt;<br /><br />
+
+         </span>
+        <b>&lt;select&gt</b>; is used to create a drop-down list.<b>&lt;option&gt;</b> is used to define the values for 
+        drop-down list.
+        <h3>Code Snippet:</h3>
+        <span>
+            Field of Study: &lt;select name=&quot;study&quot;&gt;<br />
+            &lt;option value=&quot;&quot;&gt;&lt;/option&gt;<br />
+            &lt;option value=&quot;Arts and Sciences&quot;&gt;Arts and Sciences&lt;/option&gt;<br />
+            &lt;option value=&quot;Commerce&quot;&gt;Commerce&lt;/option&gt;<br />
+            &lt;option value=&quot;Computer Science&quot;&gt;Computer Science&lt;/option&gt;<br />
+            &lt;option value=&quot;Information Technology&quot;&gt;Information Technology&lt;/option&gt;<br />
+            &lt;option value=&quot;Journalism&quot;&gt;Journalism&lt;/option&gt;<br />
+            &lt;option value=&quot;Other&quot;&gt;Other&lt;/option&gt;<br />
+            &lt;/select><br /><br />
+        </span>
+
+        <b>Number</b> attribute defines a text area where a number is to be entered. Min and Max define the minimum and
+        maximum value of this field.
+        <h3>Code Snippet</h3>
+        
+        <span>
+            Duration of course (between 1 and 5):
+            &lt;input type=&quot;number&quot; name=&quot;quantity&quot; min=&quot;1&quot; max=&quot;5&quot; value=&quot;1&quot;&gt;<br />
+            
+        </span>
+        <h2>Source Code</h2>
+        <a href="../../fileview/Default.aspx?~/experiments/html/experiment-2.html" target="_blank">Source Code</a>
+
+</body>
+</html>

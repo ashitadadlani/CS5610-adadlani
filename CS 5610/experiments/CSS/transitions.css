@@ -1,0 +1,30 @@
+﻿body {
+}
+
+#div1{
+            width: 100px;
+            height: 20px;
+            background-color: darkgreen;
+            -webkit-transition: width 2s; 
+            transition: width 2s;
+            justify-content:center;
+            margin-left:150px;
+        }
+        #div1:hover{
+            width: 200px;
+            justify-content:center;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background-color: darkblue;
+            -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+            transition: width 2s, height 2s, transform 2s;
+            margin-left: 150px;
+        }
+        #div2:hover{
+            width: 200px;
+            height: 200px;
+            -webkit-transform: rotate(180deg);
+            transform: rotate(360deg);
+        }
