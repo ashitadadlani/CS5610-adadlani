@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Interactions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="interactions.js"></script>
+    <link rel="stylesheet" type="text/css"  href="interactions.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery Interactions</h1><hr />
+        <h3>1. Draggable</h3>
+        <p>The image can be dragged and dropped anywhere on this screen.</p>
+        <div id="draggable" class="ui-widget-content">
+            <img id="drag" src="../../images/MyImages/sampleimage3.gif" />
+        </div><br />
+        <h4>Experiment Details</h4>
+        <p>The dragging is handled by the function .draggable().</p>
+        <h4>Code Snippet</h4>
+        <span>
+            $(function () {<br />
+            $("#draggable").draggable();<br />
+            });
+
+        </span>
+        <hr />
+        
+            <h3>2. Drag and Drop, and Sort</h3>
+            <p>
+                When we drag any element inside the box, all the elements get rearranged. If you try to move<br /> the element
+                up, the elements move to the right from the dropped position, and when tried to <br />drag down, they move left.
+            </p><br />
+        <div class="container">
+            <ul id="sortable">
+                <li class="ui-state-default">A</li>
+                <li class="ui-state-default">B</li>
+                <li class="ui-state-default">C</li>
+                <li class="ui-state-default">D</li>
+                <li class="ui-state-default">E</li>
+                <li class="ui-state-default">F</li>
+                <li class="ui-state-default">G</li>
+                <li class="ui-state-default">H</li>
+                <li class="ui-state-default">I</li>
+                <li class="ui-state-default">K</li>
+                <li class="ui-state-default">L</li>
+                <li class="ui-state-default">M</li>
+            </ul>
+       </div><br />
+        <h4>Code Snippet</h4>
+        $(function () {
+        $("#sortable").sortable();<br />
+        $("#sortable").disableSelection();<br />
+        });
+        <hr />
+        <h3>3.Resizable</h3>
+        <p>We can resize the image by dragging from the boundaries.</p><br/>
+            <img id="resize" class=".ui-widget-image" src="../../images/MyImages/careerfair.jpg"><br />
+        <h4>Experiment Details</h4>
+        <p>The resizable event is  handled by .resizable90 funcion</p>
+        <h4>Code Snippet</h4>
+        <span>
+            $(function () {<br />
+            $("#resize").resizable();<br />
+            });
+        </span>
+        <hr/>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/interactions.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/interactions.js" target="_blank">View JS Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/interactions.css" target="_blank">View CSS Source Code</a><br />
+        <hr />
+    </div>
+</body>
+</html>

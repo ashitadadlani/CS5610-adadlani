@@ -1,0 +1,36 @@
+﻿body {
+}
+#draggable, #drag { 
+    width: 400px; 
+    height: 300px;
+    
+}
+
+#sortable { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 400px; 
+
+}
+
+#sortable li { 
+  
+    padding: 1px; 
+    float: left; 
+    width: 100px; 
+    height: 90px; 
+    font-size: 2em; 
+    text-align: center; 
+
+}
+
+#resize { 
+    width: 400px; 
+    height: 300px; 
+
+}
+
+
+ 
+

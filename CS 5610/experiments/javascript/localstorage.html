@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Local Storage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="localstorage.js"></script>
+    <link rel="stylesheet" type="text/css" href="localstorage.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Local Storage</h1><br /><hr />
+
+        <h2>Add Elements on click</h2><br />
+        <div class="row">
+            <div class="col-md-6" id="buttons">
+                <br />
+                <button class="btn btn-default" id="addComment">Add Comment</button>
+                <button class="btn btn-default" id="saveComment">Save Comment</button>
+                <button class="btn btn-default" id="reloadComment">Reload Comment</button>
+                <ul id="commentList"></ul>
+            </div>
+        </div><hr />
+
+        <h3><u>Experiment Details:</u></h3>
+        <p>
+
+        </p>
+        <h3><u>Code Snippet:</u></h3>
+        <pre>
+ $(document).ready(function () {
+    var boxes = 0;
+    $("#addComment").click(function () {
+        boxes++;
+        var newTextBoxDiv = $(document.createElement('div'))
+            .attr({
+                "id": 'newdiv' + boxes,
+                "class": 'newstuff'
+            });
+        var newid = "textbox" + boxes;
+        newTextBoxDiv.after().html('<label>Comment' + boxes + ' : </label>' +
+           '<input type="text" name="textbox' + boxes + '" id=' + newid + ' value="">');
+        $("#buttons").prepend(newTextBoxDiv);
+    });
+    $("#saveComment").click(function () {
+        var allNewTextBoxes = $("input[id *= 'textbox']");
+        var comments = [];
+        allNewTextBoxes.each(function (index, item) {
+            if (item.value.length != 0) {
+                comments.push(item.value);
+            }
+        });
+        var aStr = JSON.stringify(comments);
+        localStorage.setItem("exp2", aStr);
+    });
+    $("#reloadComment").click(function () {
+        var storedValues = localStorage.getItem("exp2");
+        if (storedValues == null) return;
+        storedValues = JSON.parse(storedValues);
+        console.log(storedValues);
+        for (var i in storedValues) {
+            var comm = storedValues[i];
+            var comment = $("<p>" + comm + "</p>" + "<br>");
+            $("#commentList").append(comment);
+        }
+    });
+});
+</pre><hr />
+
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/localstorage.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/localstorage.js" target="_blank">View JS Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/localstorage.css" target="_blank">View CSS Source Code</a><br />
+<hr />
+    </div>
+            
+</body>
+</html>

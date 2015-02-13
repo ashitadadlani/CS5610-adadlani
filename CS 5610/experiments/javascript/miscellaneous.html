@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="miscellaneous.js"></script>
+    <link rel="stylesheet" type="text/css" href="miscellaneous.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Miscellaneous</h1><hr />
+        <div class="row">
+            <div class="col-md-6">
+
+                <h3>1. Slide</h3>
+                <p>Click on the panel below and see the slide moving down and up.</p><br />
+                <div id="flip">Click here!</div>
+                <div id="panel">Some content.</div><br /><br />
+                <h4><u>Experiment Details:</u></h4>
+                <p>The moving of slide is implemented by slideToggle() function.</p><br />
+                <h4><u>Code Snippet:</u></h4>
+                <pre>
+                    $("#flip").click(function () {<br />
+                    $("#panel").slideToggle("slow");<br />
+                    });
+                </pre>
+                <hr />
+                <h3>2. Focus</h3>
+                <p>
+                    Try entering the name and email below. As you click on Name or Email input box, the background color changes from
+                    white to grey.Also, when input field is clicked, you can see an instruction displayed which slowly disappears.
+                </p><br />
+                Name: <input id="input_focus_name" type="text" name="fullname"><span id="name">You name should be in block letters!!</span><br />
+                Email: <input id="input_focus_email" type="text" name="email"><span id="email">Enter complete email address.</span><br /><br />
+
+                <h4><u>Experiment Details:</u></h4>
+                <p>Both of these actions are performed by focus() function. To fade out the instruction, we use .fadeOut() functin.</p>
+                <h4><u>Code Snippet:</u></h4>
+                <pre>
+                
+                    $("#input_focus_name").focus(function () {<br />
+                    $(this).css("background-color", "#cccccc");<br />
+                    $("#name").css("display", "inline").fadeOut(2000);<br />
+                    });<br />
+                    $("#input_focus_email").focus(function () {<br />
+                    $(this).css("background-color", "#ffffff");<br />
+                    $("#email").css("display", "inline").fadeOut(2000);<br />
+                    });
+                
+                </pre>
+                <hr />
+
+                <h3>3. MouseUp</h3>
+                <p></p>
+                <div id="mouseup">Press down and release the mouse button over this div element.</div><br /><br />
+                <h4><u>Experiment Details:</u></h4>
+                <p>When the mouse is lifted up, mouseup() function is called which places an image below the div element.</p>
+                <h4><u>Code Snippet:</u></h4>
+                <pre>
+                  $("#mouseup").mouseup(function () {
+                     $(this).after('<img src="../../images/MyImages/sampleimage.png" />');
+                  });
+               </pre>
+                <br />
+            </div>
+        </div><hr />
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/miscellaneous.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/miscellaneous.js" target="_blank">View JS Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/miscellaneous.css" target="_blank">View CSS Source Code</a><br />
+
+
+        <hr />
+    </div>
+</body>
+</html>

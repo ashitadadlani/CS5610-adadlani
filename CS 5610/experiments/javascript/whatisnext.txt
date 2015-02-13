@@ -1,0 +1,5 @@
+﻿widgets.html jQuery: Widgets
+interactions.html jQuery: Interactions
+effects.html jQuery: Effects
+miscellaneous.html jQuery: Miscellaneous
+localstorage.html jQuery: Local Storage

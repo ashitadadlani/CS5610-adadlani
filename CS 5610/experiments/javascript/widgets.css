@@ -1,0 +1,14 @@
+﻿body {
+}
+ul.ui-autocomplete {
+    list-style: none;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#accordion-1{font-size: 14px;}
+       
+.ui-menu { width: 150px; }
+
+

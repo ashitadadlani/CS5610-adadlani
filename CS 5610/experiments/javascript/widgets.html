@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Widgets</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="widgets.js"></script>
+    <link rel="stylesheet" type="text/css" href="widgets.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery Widgets</h1><hr />
+        <h3>1. Accordion</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="accordion-1">
+
+                    <h4>Section 1</h4>
+                    <div>
+                        <p>Section 1 content</p>
+
+                    </div>
+                    <h4>Section 2</h4>
+                    <div>
+                        <p> section 2 content</p>
+                    </div>
+                </div><br />
+                <h4><u>Experiment Details:</u></h4>
+                <p>The accordion is implemented by accordion() function.</p>
+                <h4><u>Code Snippet:</u></h4>
+                <pre>
+                    $(function () {
+                       $("#accordion-1").accordion();
+                    });
+                </pre>
+                <br /><hr />
+                <h3>2. Autocomplete and Tooltip</h3>
+                <p></p><br />
+                <div class="ui-widget">
+                    <label for="tags">Programming Language: </label>
+                    <input id="tags" title="Enter the programming languages you are interested.">
+                </div><br />
+                <h4><u>Experiment Details</u></h4>
+                <p>
+                    In this, we are auto completing an input field. The field shows suggestions as soon as first charachter is
+                    entered. This is achieved by autocomplete() function.The tooltip is used to display a text when a mouse is hovered
+                    on some input field. This is done with the help of tooltip() function.
+                </p><br />
+                <h4><u>Code Snippet</u></h4>
+                <h5><b><u>Autocomplete</u></b></h5>
+                <pre>
+                  $(function () {<br />
+                    var availableTags = [<br />
+                    "ActionScript",<br />
+                    "AppleScript",<br />
+                    "Asp",<br />
+                    "BASIC",<br />
+                    "C",<br />
+                    "C++",<br />
+                    "Clojure",<br />
+                    "COBOL",<br />
+                    "ColdFusion",<br />
+                    "Erlang",<br />
+                    "Fortran",<br />
+                    "Groovy",<br />
+                    "Haskell",<br />
+                    "Java",<br />
+                    "JavaScript",<br />
+                    "Lisp",<br />
+                    "Perl",<br />
+                    "PHP",<br />
+                    "Python",<br />
+                    "Ruby",<br />
+                    "Scala",<br />
+                    "Scheme"<br />
+                  ];<br />
+                  $("#tags").autocomplete({<br />
+                    source: availableTags,<br />
+                    autoFocus: true,<br />
+                    _renderItem: function (ul, item) {<br />
+                    return $("&lt;li&gt;")<br />
+                    .attr("data-value", item.value)<br />
+                    .append(item.label)<br />
+                    .appendTo(ul);<br />
+                  },<br />
+                  focus: function (event, ui) {<br />
+                    $(".ui-helper-hidden-accessible").hide();<br />
+                    event.preventDefault();<br />
+                    }<br />
+                   });<br />
+                 });<br />
+                </pre>
+                <h5><b><u>Tooltip</u></b></h5>
+                <pre>
+                    $(function () {<br />
+                        $(document).tooltip();<br />
+                    });
+                </pre>
+
+                <hr />
+                <h3>3. Menu</h3>
+                <ul id="menu">
+                    <li class="ui-state-disabled">Aberdeen</li>
+                    <li>Ada</li>
+                    <li>Adamsville</li>
+                    <li>Addyston</li>
+                    <li>
+                        Delphi
+                        <ul>
+                            <li class="ui-state-disabled">Ada</li>
+                            <li>Saarland</li>
+                            <li>Salzburg an der schönen Donau</li>
+                        </ul>
+                    </li>
+                    <li>Saarland</li>
+                    <li>
+                        Salzburg
+                        <ul>
+                            <li>
+                                Delphi
+                                <ul>
+                                    <li>Ada</li>
+                                    <li>Saarland</li>
+                                    <li>Salzburg</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Delphi
+                                <ul>
+                                    <li>Ada</li>
+                                    <li>Saarland</li>
+                                    <li>Salzburg</li>
+                                </ul>
+                            </li>
+                            <li>Perch</li>
+                        </ul>
+                    </li>
+                    <li class="ui-state-disabled">Amesville</li>
+                </ul><br />
+                <h4><u>Experiment Details:</u></h4>
+                <p>We can obtain the menu by menu() funcion.</p>
+                <h4><u>Code Snippet:</u></h4>
+                <pre>
+                    $(function () {
+                       $("#menu").menu();
+                    });
+                </pre>
+               
+            </div>
+        </div>
+        <hr />
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/widgets.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/widgets.js" target="_blank">View JS Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/javascript/widgets.css" target="_blank">View CSS Source Code</a><br />
+        <hr />
+
+    </div>
+
+</body>
+</html>

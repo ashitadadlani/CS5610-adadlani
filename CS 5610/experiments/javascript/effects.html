@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery Effects</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="effects.js"></script>
+    <link rel="stylesheet" type="text/css" href="effects.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery Effects</h1>
+        <hr />
+        <h3>1. Show/Hide </h3><br />
+
+        <button class="btn btn-default" id="show-hide-btn">Show/Hide Effect</button>
+        <p id="show-hide"><br />Click on Show/Hide button to see the effect</p><br />
+        <h4>Experiment Details</h4>
+        <p>Show/hide is implemented using .toggle() function on the button.</p>
+        <h4>Code Snippet</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <pre>
+            $("#show-hide-btn").click(function () {<br />
+               $("#show-hide").toggle();<br />
+            });
+        </pre>
+            </div></div><hr />
+
+            <h3>2. Fade In/Fade Out</h3>
+            <p>Click on the button to see Fade In/Fade Out effect</p><br />
+
+            <button class="btn btn-default" id="fadeIn-fadeout-btn">Fade in/out</button><br>
+
+            <div id="div1"><br />Fade In-Fade Out Effect</div><br />
+
+            <h4>Experiment Details</h4>
+            <p>The fadeToggle() function toggles between Fade In in one click and Fade Out on the next click.</p>
+            <h4>Code Snippet</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <pre>
+            $("#fadeIn-fadeout-btn").click(function () {<br />
+                $("#div1").fadeToggle(2000);<br />
+            });
+        </pre>
+                </div>
+        </div>
+            <hr />
+            <h3>3. Animate</h3>
+            <p>Hover the mouse on the image to see animation effect.</p><br />
+            <div id="animate-test">
+                <img id="animate" src="../../images/MyImages/sampleimage3.gif" />
+            </div><br />
+            <h4>Experiment Details</h4>
+            <p>
+                The image animates(zooms in) when mouse is hovered ober it and zooms out when the mouse is removed.This
+                is done by using .animate() function in which we pass the width and height of the image after zooming in and zooming out.
+            </p>
+            <h4>Code Snippet</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <pre>
+            $("#animate-test img").hover(function () {<br />
+              $(this).stop().animate({ width: "500px" , height: "500px"});<br />
+
+            }, function () {<br />
+              $(this).stop().animate({ width: "200px" , height: "300px"});<br />
+            });
+        </pre>
+                </div>
+            </div>
+            <hr />
+            <h3>Source Code</h3>
+            <a href="../../fileview/Default.aspx?~/experiments/javascript/effects.html" target="_blank">View HTML Source Code</a><br />
+            <a href="../../fileview/Default.aspx?~/experiments/javascript/effects.js" target="_blank">View JS Source Code</a><br />
+            <hr />
+        </div>
+</body>
+</html>
