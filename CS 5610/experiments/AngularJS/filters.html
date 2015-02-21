@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AngularJS Filters</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="filters.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>AngularJS Forms</h1><br /><hr/>
+        <h3><b>About the Experiment</b></h3>
+        <p>
+            In this experiment, I am exploring the filter functions in Angular JS. The data in input fields is defaulted using ($scope).
+            We can modify the data entered by the users using filter functions. 
+            The data entered can be clubbed together using pipe(|) character. <br />
+            The input value can be converted to uppercase using 'uppercase' filter.<br />
+            Multiplication of price per item and number of items is done using 'currency' filter.
+        </p>
+        <hr />
+        <h3><b>Experiment Demo</b></h3><br />
+        <div ng-app="" ng-controller="costController">
+            <div class="row">
+                <div class="col-md-6">
+                <b>First Name: </b><input type="text" ng-model="firstName"><br><br />
+                <b>Last Name: </b><input type="text" ng-model="lastName"><br>
+                <br>
+
+                <b>Enter book name: </b><input type="text" ng-model="book"><br /><br />
+
+                <b>Enter quantity: </b><input type="number" ng-model="quantity"><br /><br />
+                <b>Price per item ($):</b> <input type="number" ng-model="price"><br /><br />
+
+                Full Name: {{firstName + " " + lastName}}<br />
+                Book ordered: {{book | uppercase}}<br />
+                <p><b>Total Cost:</b> {{ (quantity * price) | currency }}</p>
+            </div>
+        </div>
+        </div>
+        <hr />
+        <h4><b>Code Snippet</b></h4>
+        <p>The HTML Code below shows the use of filter functions 'uppercase' and 'currency' followed by pipe character.</p>
+        <pre>
+            &lt;div ng-app="" ng-controller="costController"&gt;
+                &lt;div class="row"&gt;
+                    &lt;div class="col-md-6"&gt;
+                        &lt;b&gt;First Name: &lt;/b&gt&lt;input type="text" ng-model="lastName" &gt;&lt;br&gt;&lt;br&gt;
+                        &lt;b&gt;Enter book name: &lt;/b&gt;&lt;input type="text" ng-model="book"&gt;&lt;br /&gt;&lt;br /&gt;
+                        &lt;b&gt;Enter quantity: &lt;/b&gt;&lt;input type="number" ng-model="quantity"&gt;&lt;br /&gt;&lt;br /&gt;
+                        &lt;b&gt;Price per item ($):&lt;/b&gt; &lt;input type="number" ng-model="price"&gt;&lt;br /&gt;&lt;br /&gt;
+
+                        Full Name: {{firstName + " " + lastName}}&lt;br /&gt;
+                        Book ordered: {{book | uppercase}}&lt;br /&gt;
+                        &lt;p&gt;&lt;b&gt;Total Cost:&lt;/b&gt; {{ (quantity * price) | currency }}&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        </pre>
+        <p>The Javascript code below shows the coltroller function to default the input field with some value.</p>
+        <pre>
+            function costController($scope) {
+               $scope.quantity = 1;
+               $scope.price = 9.99;
+               $scope.book = "The Alchemist";
+               $scope.firstName = "Ashita",
+               $scope.lastName = "Dadlani"
+            }
+       </pre>
+        <hr />
+        <h4><b>Source Code</b></h4>
+        <a href="../../fileview/Default.aspx?~/experiments/AngularJS/filters.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/AngularJS/filters.js" target="_blank">View JS Source Code</a><br />
+        <hr />
+        <h4><b>References</b></h4>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a><br />
+        <hr />
+        </div>
+
+
+</body>
+</html>

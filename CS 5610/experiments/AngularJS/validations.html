@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Validations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="validations.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>AngularJS Validation</h1><br /><hr />
+        <h3><b>About the Experiment</b></h3>
+        <p>
+            In this experiment, I have tried to validate different elements of a form before the form is submitted.
+        For instance, when a user leaves input field for Username empty, an error is thrown saying 'Username is required'.
+        Also, if the email doesn't contain proper characters such as '@', an error is displayed saying 'Incorrect email address'.
+        The form is allowed to be submit only when all the errors are corrected.
+        </p><hr />
+        <h3><b>Experiment Demo</b></h3><br />
+        <form ng-app="" ng-controller="validateCtrl"
+              name="myForm" novalidate>
+
+            <p>
+                <b>Username:</b><br>
+                <input type="text" name="user" ng-model="user" required>
+                <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                    <span ng-show="myForm.user.$error.required">Username is required.</span>
+                </span>
+            </p>
+
+            <p>
+                <b>Email:</b><br>
+                <input type="email" name="email" ng-model="email" required>
+                <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                    <span ng-show="myForm.email.$error.required">Email is required.</span>
+                    <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                </span>
+            </p>
+
+            <p>
+                <input class="btn btn-primary" type="submit"
+                       ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid">
+            </p>
+
+        </form>
+        <hr />
+        <h4><b>Code Snippet</b></h4>
+        <p>The HTML Code below uses angular JS functions for validation. For example:<br />
+        1. ng-disabled directive disables the button.<br />
+        2. $invalid: It is true if atleast one of the form element is invalid.<br />
+        3. $valid: It is set to true if all of the form elements are valid, else it is set to false.<br />
+        4. $error: Is an object hash, containing references to controls or forms with failing validators, where
+            keys are validation tokens (error names), and values are arrays of controls or forms that have a failing validator for given error name.<br />
+
+        </p>
+        <pre>
+            &lt;form ng-app="" ng-controller="validateCtrl"
+                  name="myForm" novalidate&gt;
+                 &lt;p&gt;
+                     &lt;b&gt;Username:&lt;/b&gt;
+                     &lt;input type="text" name="user" ng-model="user" required&gt;
+                     &lt;span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid"&gt;
+                     &lt;span ng-show="myForm.user.$error.required">Username is required.&lt;/span&gt;
+                     &lt;/span&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                     &lt;b&gt;Email:&lt;/b&gt;
+                     &lt;input type="email" name="email" ng-model="email" required&gt;
+                     &lt;span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid"&gt;
+                     &lt;span ng-show="myForm.email.$error.required">Email is required.&lt;/span&gt;
+                     &lt;span ng-show="myForm.email.$error.email">Invalid email address.&lt;/span&gt;
+                    &lt;/span&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                   &lt;input type="submit"
+                      ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid"&gt;
+                &lt;/p&gt;
+          &lt;/form&gt;
+</pre>
+        <p>
+            The Javascript code below intializes the value of input fields.
+        </p>
+        <pre>
+            function validateCtrl($scope) {
+                $scope.user = 'Ashita Dadlani';
+                $scope.email = 'ashita.dadlani@gmail.com';
+            }
+</pre>
+        <hr />
+        <h4>Vide Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/experiments/AngularJS/validations.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/AngularJS/validations.js" target="_blank">View JS Source Code</a><br />
+        <hr />
+        <h4><b>References</b></h4>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a><br />
+        <hr />
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add/Remove</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="addremove.js"></script>
+</head>
+<body ng-app="addRemove">
+    <div class="container">
+
+        <h1>Adding and removing from tables</h1><br /><hr />
+        
+        <h3><b>About the Experiment</b></h3>
+        <p>
+            In this experiment, I dynamically add/ remove elemts from DOM.
+            The experiment has pre-defined data entries for books. On clicking 'Remove' button, the particular entry gets 
+            deleted from the table. <br />
+            We can add a new book to the table by filling the form under section 'Add Book' and clicking on 'Submit' button. 
+        </p><hr />
+        <h3><b>Experiment Demo</b></h3><br />
+        <div class="row">
+            <div ng-app="" ng-controller="BookMgmt">
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Author
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                            Remove
+                        </th>
+                    </tr>
+                    <tr ng-repeat="book in books">
+                        <td>
+                            {{book.title}}
+                        </td>
+                        <td>
+                            {{book.author}}
+                        </td>
+                        <td>
+                            {{book.rating}}
+                        </td>
+                        <td>
+                            <input type="button" value="Remove" class="btn btn-danger" ng-click="removeRow(book.title)" />
+                        </td>
+                    </tr>
+                </table>
+                        
+                  <br />      
+                  <h3>Add books</h3>
+                            
+                <form class="form-inline" role="form" ng-submit="addRow()">
+                    <div class="form-group">
+                        <label>Title: </label>
+                            <input type="text" class="form-control" name="title"
+                                   ng-model="title" />
+                        
+                    </div><br /><br />
+                    <div class="form-group">
+                        <label>Author: </label>
+                            <input type="text" class="form-control" name="author"
+                                   ng-model="author" />
+                        
+                    </div><br /><br />
+                    <div class="form-group">
+                        <label>Rating: </label>
+                            <input type="text" max="10" min="0" class="form-control" name="rating"
+                                   ng-model="rating" />/10
+                        
+                    </div><br /><br />
+                    <div class="form-group">
+                        <div style="padding-left:110px">
+                            <input type="submit" value="Submit" class="btn btn-success" />
+                        </div>
+                    </div>
+                </form>
+                <br /><hr />
+
+                <h4><b>Code Snippet</b></h4>
+                
+                <p>The Javascript code below defines addRow() and removeRow() function to dynamically add/remove
+                table entries.<br />
+                The <b>removeRow()</b> function takes 'title' as the input. It iterates over all the elements in the array
+                and removes the title that matches with the parameter name.<br />
+                In <b>addRow()</b> function, the values inputted are pushed to scope variable 'push' and values values inputted
+                are assigned to their respective elements. 
+                </p><br />
+                <pre>
+                  app.controller("BookMgmt", ['$scope', '$http', function ($scope, $http) {
+                     $scope.books = [
+                        {
+                            'title': 'Catch 22',
+                            'author': 'Joseph Heller',
+                            'rating': 8
+                        },
+                            {
+                                'title': 'The Fountainhead',
+                                'author': 'Ayn Rand',
+                                'rating': 9
+                            },
+                                {
+                                    'title': 'To kill a mocking bird',
+                                    'author': 'Harper Lee',
+                                    'rating': 9.7
+                                },
+                                    
+                    ];
+                    $scope.addRow = function () {
+                      $scope.books.push({ 'title': $scope.title, 'author': $scope.author, 'rating': $scope.rating });
+                      $scope.title = '';
+                      $scope.author = '';
+                      $scope.rating = '';
+                    };
+                   $scope.removeRow = function (book) {
+                       var index = -1;
+                       var bookArr = eval($scope.books);
+                       for (var i = 0; i < bookArr.length; i++) {
+                           if (bookArr[i].title === book) {
+                               index = i;
+                               break;
+                           }
+                      }
+                      if (index === -1) {
+                         alert("Something gone wrong");
+                      }
+                     $scope.books.splice(index, 1);
+                  };
+             }]);
+             </pre><hr />
+                <h4><b>View Source Code</b></h4>
+                <a href="../../fileview/Default.aspx?~/experiments/AngularJS/addremove.html" target="_blank">View HTML Source Code</a><br />
+                <a href="../../fileview/Default.aspx?~/experiments/AngularJS/addremove.js" target="_blank">View JS Source Code</a><br />
+                <hr />
+                <h4><b>References</b></h4>
+                <a href="http://www.w3schools.com/" target="_blank">W3Schools</a><br />
+                <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a>
+                <hr />
+                </div>
+            </div>
+    </div>
+</body>
+</html>

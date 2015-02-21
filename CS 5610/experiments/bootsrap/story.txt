@@ -1,4 +1,4 @@
-﻿../../story/whatisnext.htm?../experiments/bootsrap/whatisnext.txt What is Next?
+﻿../../story/whatisnext.htm?../experiments/bootsrap/whatisnext.txt Week 3
 experiment-4.html Bootsrap Jumbotrons
 experiment-1.html Bootsrap Grids
 experiment-2.html Bootsrap Forms

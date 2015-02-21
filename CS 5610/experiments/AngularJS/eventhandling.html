@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="eventhandling.js"></script>
+</head>
+<body ng-app="MyApp">
+    <div class="container">
+        <h1>Event Handling</h1><hr />
+        <h3><b>About the Experiment</b></h3>
+        <p>
+            In this experiment, I have tried two event handlers for DOM elements. <br />
+            In the first one,that is, when the user checks the check box 'disable', the button 'Click me' gets disabled.In the second,
+            I have used ng-click directive with the button to define what needs to be done on click. 
+        </p>
+        <div ng-app="" ng-controller="myController">
+            <hr />
+            <h3><b>Experiment Demo</b></h3><br />
+            <p> <button class="btn btn-primary" ng-click="count = count + 1"> Click Me! </button> : {{ count }} </p><br />
+            <input type="checkbox" ng-model="enableDisableButton">Disable Button
+            <button class="btn btn-primary" ng-disabled="enableDisableButton" ng-click="click()">Click Me!</button>
+            <hr />
+            <h4><b>Code Snippet</b></h4>
+            <p>The HTML Code below shows the use of ng-click, ng-model and ng-disabled directive.<br />
+            The ng-click directive defines the expressions to be evaluated when the button is clicked.<br />
+            ng-model directive is to link existing html elements with a value in scope.<br />
+            ng-disabled directive disables the button.
+            </p>
+            <pre>
+                &lt;p&gt; &lt;button class="btn btn-primary" ng-click="count = count + 1"> Click Me! &lt;/button&gt; : {{ count }} &lt;/p&gt;
+                &lt;input type="checkbox" ng-model="enableDisableButton"&gt;Disable Button
+                &lt;button class="btn btn-primary" ng-disabled="enableDisableButton" ng-click="click()"&gt;Click Me!&lt;/button&gt;
+            </pre>
+            <p>The Javascript code below initializes the count variable to zero and throws a pop-up when button is enabled and clicked.</p>
+            <pre>
+                app.controller("myController", function ($scope) {
+                    $scope.count = 0;
+                    $scope.click = function () {
+                         alert("button clicked");
+               }}
+            </pre><hr />
+            <h4>Vide Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/experiments/AngularJS/eventhandling.html" target="_blank">View HTML Source Code</a><br />
+            <a href="../../fileview/Default.aspx?~/experiments/AngularJS/eventhandling.js" target="_blank">View JS Source Code</a><br />
+            <hr />
+            <h4><b>References</b></h4>
+            <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a><br />
+            <hr />
+        </div>
+    </div>
+</body>
+</html>

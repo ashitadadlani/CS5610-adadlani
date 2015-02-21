@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tables</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="tables.js"></script>
+    <link rel="stylesheet" type="text/css" href="tables.css" />
+</head>
+<body ng-app="Books">
+    <div class="container">
+        <h1>AngularJS Tables</h1><hr />
+        <h3><b>About the Experiment</b></h3>
+        <p>
+            In this experiment, I have implemented filtering funcitonality on a table with pre-existing enteries for books.
+            When we type in the characters in the column 'Title' or 'Author', the data in the table gets filtered depending on
+            the characters entered and the DOM is updated. Hence, in this application user gets single page functionality without
+            reloading.
+        </p>
+        <div class="row">
+            <hr />
+            <h3><b>Experiment Demo</b></h3><br />
+                <div ng-app="" ng-controller="customersController">
+                    <form class="form-inline">
+                        Search: <input ng-model="query" type="text"
+                               placeholder="Filter by book id, title or author" autofocus>
+                    </form><br /><br />
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td><b>SerialNo.</b></td>
+                                <td><b> Title </b></td>
+                                <td><b>Author </b></td>
+
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="x in books | filter:query | orderBy: 'title'" >
+                            <td>{{$index + 1}}</td>
+                            <td>{{ x.title }}</td>
+                            <td>{{ x.author }}</td>
+                        </tr>
+                    </table>
+
+                </div>
+            <br />
+            <hr />
+            <h4><b>Code Snippet</b></h4>
+            <p>The HTML code below is for the input search field where we use ng-model for query.</p>
+            <pre>
+                &lt;form class="form-inline"&gt;
+                        Search: &lt;input ng-model="query" type="text"
+                          placeholder="Filter by book id, title or author" autofocus&gt;
+                &lt;form&gt;
+            </pre>
+            <p>In the HTML code below we are constructing a table with pre-defined entries.<br />
+            The ng-repeat directive performs iteration over each entry in the table and filters them according to the 
+            characters entered in the search field sorted by title.</p>
+            <pre>
+                   &lt;table class="table table-striped"&gt;
+                       &lt;thead&gt;
+                            &lt;tr&gt;
+                               &lt;td&gt;&lt;b&gt;SerialNo.&lt;/b&gt;&lt;/td&gt;
+                               &lt;td&gt;&lt;b&gt; Title &lt;/b&gt;&lt;/td&gt;
+                               &lt;td&gt;&lt;b&gt;Author &lt; /&gt;b>&lt;/td&gt;
+                            &lt;/tr&gt;
+                       &lt;/thead&gt;
+                       &lt;tr ng-repeat="x in books | filter:query | orderBy: 'title'"&gt;
+                              &lt;td>{{$index + 1}}&lt;/td&gt;
+                              &lt;td>{{ x.title }}&lt;/td&gt;
+                              &lt;td>{{ x.author }}&lt;/td&gt;
+                       &lt;/tr&gt;
+                   &lt;/table&gt;
+            </pre>
+            <p>The Javascript code below defines a function which takes the elements(characters) entered in the 
+            search field and returns true/false accordingly.</p>
+            <pre>
+                $scope.filterFunction = function (element) {
+                   return element.title.match(/^Ma/) ? true : false;
+                };
+           </pre>
+            <p>The Javascript code below creates a table.</p>
+            <pre>
+                app.controller("customersController", function ($scope) {
+                    $scope.books = [
+                       { "title": 'A tale of two cities', "author": 'Charles Darwin' },
+                       { "title": 'To kill a Mocking bird', "author": 'Harper Lee' },
+                       { "title": 'The Fountainhead', "author": 'Ayn Rand' },
+                       { "title": 'Catch 22', "author": 'Joseph Heller' }];
+                });
+            </pre><hr />
+
+            <h4><b>View source code</b></h4>
+            <a href="../../fileview/Default.aspx?~/experiments/AngularJS/tables.html" target="_blank">View HTML Source Code</a><br />
+            <a href="../../fileview/Default.aspx?~/experiments/AngularJS/tables.js" target="_blank">View JS Source Code</a><br />
+            <a href="../../fileview/Default.aspx?~/experiments/AngularJS/tables.css" target="_blank">View CSS Source Code</a><br />
+            <hr />
+            <h4><b>References</b></h4>
+            <a href="http://www.w3schools.com/" target="_blank">W3Schools</a><br />
+            <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>

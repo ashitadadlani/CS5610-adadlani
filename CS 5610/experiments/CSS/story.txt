@@ -1,4 +1,4 @@
-﻿../../story/whatisnext.htm?../experiments/CSS/whatisnext.txt What is Next?
+﻿../../story/whatisnext.htm?../experiments/CSS/whatisnext.txt Week 2
 transitions.html CSS: Transitions
 zooming.html CSS: Zooming Effects
 flip.html CSS: Flipping Images

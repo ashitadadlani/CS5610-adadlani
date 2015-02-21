@@ -1,4 +1,4 @@
-﻿../../story/whatisnext.htm?../experiments/javascript/whatisnext.txt What is Next?
+﻿../../story/whatisnext.htm?../experiments/javascript/whatisnext.txt Week 4
 widgets.html jQuery: Widgets
 interactions.html jQuery: Interactions
 effects.html jQuery: Effects

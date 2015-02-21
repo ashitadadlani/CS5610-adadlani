@@ -1,0 +1,6 @@
+﻿../../story/whatisnext.htm?../experiments/AngularJS/whatisnext.txt Week 5
+filters.html AngularJS: Filters
+tables.html AngularJS: Tables
+addremove.html AngularJS: Adding/Removing from table
+validations.html AngularJS: Validations
+eventhandling.html AngularJS: Event Handling
