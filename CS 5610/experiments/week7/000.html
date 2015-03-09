@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="000.js"></script>
+    <style>
+        body{
+            padding: 60px;
+        }
+    </style>
+</head>
+<body ng-app="CourseApp" class="container">
+    <nav ng-controller="NavController"
+         class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#/home">Home</a></li>
+                        <li ng-show="currentuser"><a href="#/contact">Contact</a></li>
+                        <li ng-show="currentuser"><a href="#/profile">Profile</a></li>
+                    </ul>
+                    <ul ng-show="currentuser" class="nav navbar-nav navbar-right">
+                        <li><a href="#/home">Logout</a></li>
+                    </ul>
+                        <form class="navbar-form navbar-right" ng-show="!currentuser">
+                            <div class="form-group">
+                                <input ng-model="email" type="text" placeholder="Email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input ng-model="password" type="password" placeholder="Password" class="form-control">
+                            </div>
+                            <button ng-click="login()" type="submit" class="btn btn-success">Sign in</button>
+                        </form>
+
+</div><!--/.navbar-collapse -->
+            </div>
+       
+    </nav>
+    
+    <div ng-view></div><br />
+    <hr />
+    <h4><b>About the Experiment</b></h4>
+    <p>
+        This experiment uses AngularJS routing property to navigate to different pages at the same time giving the feel of single page functionality.
+        A new page is loaded without refreshing the current page, and is achieved by using 'ngRoute' service.Each page has its unique
+        controller and is mapped to attributes and methods in its mapped controller.<br />
+        When a user enters a valid email and password, he can see more tabs specific to him such as 'contact' and 'profile'.
+        If the credentials are invalid, no action takes place.<br />
+        For this experiment, I have used the following credentials:<br />
+        <ul>
+            <li>
+                Email: admin@xyz.com,
+                Password: admin
+            </li>
+            <li>
+                Email: student@xyz.com,
+                Password: student
+            </li>
+            <li>
+                Email: faculty@xyz.com,
+                Password: faculty
+            </li>
+         </ul>
+    </p>
+    
+    <hr />
+    <h4><b>Code Snippet</b></h4>
+    <p>Javacript code</p>
+    <pre>
+ app.controller("NavController", function ($scope, UserService) {
+    $scope.currentuser = null;
+    $scope.login = function () {
+        var email = $scope.email;
+        var password = $scope.password;
+        $scope.currentuser = UserService.login(email, password);
+    }
+});
+app.factory("UserService", function () {
+    var currentuser = null;
+    var users = [
+        { email: "admin@xyz.com", password: "admin"},
+        { email: "student@xyz.com", password: "student" },
+        { email: "faculty@xyz.com", password: "faculty" }
+    ]
+    var login = function (email, password) {
+        for (var u in users) {
+            if (users[u].email == email && users[u].password == password) {
+                currentuser = users[u];
+                return users[u];
+            }
+        }
+        return null;
+    };
+    var getcurrentuser = function()
+    {
+        return currentuser;
+    }
+    return {
+        login: login,
+        getcurrentuser: getcurrentuser
+    };
+});
+</pre>
+    <hr />
+    <h4><b>Source Code</b></h4>
+    <a href="../../fileview/Default.aspx?~/experiments/week7/000.html" target="_blank">View HTML Source Code</a><br />
+    <a href="../../fileview/Default.aspx?~/experiments/week7/000.js" target="_blank">View JS Source Code</a><br />
+    <hr />
+    <h4><b>References</b></h4>
+    <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a><br />
+    <a href="https://www.youtube.com/user/jannunzi/videos" target="_blank">Prof. Jose's Video</a><br />
+    <hr />
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿<h1>Profile</h1>
+
+Hello {{currentuser.email}}
+
+<div ng-show="currentuser.role == 'faculty'">
+
+
+
+    <h2>Courses Authored</h2>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="course in authoring">
+                    <td>
+                        {{course.title}}
+                    </td>
+                    <td>
+                        <div class="col-md-6">
+                            <input type="button" value="Remove" class="btn btn-success" ng-click="removeCourse(authoring, $index)">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>Courses Teaching</h2>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="course in teaching">
+                    <td>
+                        {{course.title}}
+                    </td>
+                    <td>
+
+                        <input type="button" value="Remove" class="btn btn-success" ng-click="removeCourse(teaching, $index)">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div ng-show="currentuser.role == 'student'">
+    <h2>Registered Courses</h2>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="course in registered">
+                    <td>
+                        {{course.title}}
+                    </td>
+                    <td>
+                        <input type="button" value="Remove" class="btn btn-success" ng-click="removeCourse(registered, $index)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-show="newCourses">
+        <h2>Additional Courses</h2>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Add
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="course in newCourses">
+                        <td>
+                            {{course.title}}
+                        </td>
+                        <td>
+                            <input type="button" value="Add" class="btn btn-success" ng-click="addCourse(registered, newCourses, $index)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

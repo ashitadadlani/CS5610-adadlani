@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="experiment-4.js"></script>
+    <style>
+        .poster {
+            float: left;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+<body ng-app="MoviesApp">
+    <div ng-controller="MoviesController" class="container">
+        <h1>Movies App</h1>
+        <br /><hr />
+        <h2>About the experiment</h2>
+        <p>
+            In this experiment, I have used IMDB API to get movie details. Once we enter a movie title in the search bar, details of that
+            movie is fetched from imdb database and displayed. We can then add the movies to favorites list, edit a movie or delete it from
+            the listed set of movies. Once the movie is in favorites, we can see more details of the movie. Favorites and Details heading
+        gets displayed only when a movie is added to favorites list and details button is clicked, respectively.
+        </p><hr /><br />
+        <div ng-show="details">
+        <h2>Details</h2>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <img ng-src="{{details.urlPoster}}"  />
+
+            </div>
+
+            <div class="col-sm-8">
+        <h3>{{details.title}}</h3>
+        
+            
+        Rating: {{details.rating}}   
+                <br />
+            Languages:
+        <ul><li ng-repeat="language in details.languages">{{language}}</li>
+        </ul>
+            
+                Generes:
+                <ul><li ng-repeat="genres in details.genres">{{genres}}</li></ul>
+                <p>
+                    {{details.plot}}
+                </p>
+        </div>
+        </div>
+        </div>
+        <div ng-show="favoritemovies.length > 0">
+            <h2>Favorite Movies</h2>
+
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="movie in favoritemovies">
+                        <td>{{movie.title}}</td>
+                        <td>{{movie.year}}</td>
+
+                        <td>
+                            <img class="poster" ng-src="{{movie.urlPoster}}" width="50" />
+
+                            {{movie.plot}}
+                        </td>
+                        <td>
+
+                            <button ng-click="removeFavoriteMovie(movie)" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button ng-click="detailsMovie(movie)" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                        </td>
+
+                    </tr>
+            </table>
+            </div>
+
+            <h2>Search Movies</h2>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="searchByTitle" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="searchMovies()">Search</button>
+                </span>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Plot</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th><input ng-model="movie.title" class="form-control" /></th>
+                        <th><input ng-model="movie.year" class="form-control" /></th>
+                        <th><input ng-model="movie.plot" class="form-control" /></th>
+                        <th>
+                            <button ng-click="updateMovie()" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                        </th>
+                        <th>
+                            <button ng-click="addMovie()" class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="movie in movies">
+                        <td>{{movie.title}}</td>
+                        <td>{{movie.year}}</td>
+
+                        <td>
+                            <img class="poster" ng-src="{{movie.urlPoster}}" width="50" />
+
+                            {{movie.plot}}
+                        </td>
+                        <td>
+                            <button ng-click="selectMovie(movie)" class="btn btn-warning">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+
+                            <button ng-click="removeMovie(movie)" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button ng-click="addToFavorites(movie)" class="btn btn-info">
+                                <span class="glyphicon glyphicon-star"></span>
+                            </button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        <br />
+        <hr />
+        <h4>Code Snippet</h4>
+        <pre>
+            function myapifilms(response) {
+    alert(response);
+}
+app.controller("MoviesController",
+    function ($scope, $http) {
+        $scope.favoritemovies = [];
+        $scope.detailsMovie = function (movie) {
+            $http.jsonp("http://www.myapifilms.com/imdb?format=JSONP&idIMDB=" + movie.idIMDB + "&callback=JSON_CALLBACK")
+            .success(function (movie) {
+                $scope.details = movie;
+            });
+        }
+        $scope.addToFavorites = function (movie) {
+            $scope.favoritemovies.push(movie);
+        }
+        $scope.removeFavoriteMovie = function (movie) {
+            var index = $scope.favoritemovies.indexOf(movie)
+            $scope.favoritemovies.splice(index, 1);
+        }
+        $scope.searchMovies = function () {
+            var title = $scope.searchByTitle;
+            $http.jsonp("http://www.myapifilms.com/imdb?title=" + title + " &format=JSONP&aka=0&business=0&seasons=0&seasonYear=0&technical=0&filter=N&exactFilter=0&limit=10&lang=en-us&actors=N&biography=0&trailer=0&uniqueName=0&filmography=0&bornDied=0&starSign=0&actorActress=0&actorTrivia=0&movieTrivia=0&awards=0&moviePhotos=N&movieVideos=N&callback=JSON_CALLBACK")
+            .success(function (response) {
+                $scope.movies = response;
+            })
+        };
+        $scope.addMovie = function () {
+            var newmovie = {
+                title: $scope.movie.title,
+                year: $scope.movie.year,
+                plot: $scope.movie.plot,
+            };
+            $scope.movies.push(newmovie);
+        }
+        $scope.removeMovie = function (movie) {
+            var index = $scope.movies.indexOf(movie);
+            $scope.movies.splice(index, 1);
+        }
+    });
+</pre><hr />
+        <h4><b>Source Code</b></h4>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/experiment-4.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/week6/experiment-4.js" target="_blank">View JS Source Code</a><br />
+        <hr />
+        <h4><b>References</b></h4>
+        <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a><br />
+        <a href="https://www.youtube.com/user/jannunzi/videos" target="_blank">Prof. Jose's Video</a><br />
+        <hr />
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Remove courses</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="002.js"></script>
+    <style>
+        body {
+            padding: 60px;
+        }
+    </style>
+</head>
+<body ng-app="CourseApp" class="container">
+    <nav ng-controller="NavController"
+         class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#/home">Home</a></li>
+                    <li ng-show="currentuser"><a href="#/contact">Contact</a></li>
+                    <li ng-show="currentuser"><a href="#/profile/{{currentuser.email}}">Profile</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="currentuser" ng-click="logout()"><a href="#/home">Logout</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" ng-show="!currentuser">
+                    <div class="form-group">
+                        <input ng-model="email" type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <button ng-click="login()" type="submit" class="btn btn-success">Sign in</button>
+                </form>
+
+            </div><!--/.navbar-collapse -->
+        </div>
+
+    </nav>
+    <div ng-view>
+
+    </div><br />
+    <hr />
+    <h4><b>About the Experiment</b></h4>
+    <p>
+        This experiment uses AngularJS routing property to navigate to different pages at the same time giving the feel of single page functionality.
+        A new page is loaded without refreshing the current page, and is achieved by using 'ngRoute' service.Each page has its unique
+        controller and is mapped to attributes and methods in its mapped controller.<br />
+        When a user enters a valid email and password, he can see more tabs specific to him such as 'contact' and 'profile'.
+        If the credentials are invalid, no action takes place. The Profile tab shows the email Id is user as well as the courses
+        he is registered to. I have an additional 'Remove' button next to all the courses so that the student or faculty can remove 
+        them from their lists.When you click on 'Logout' button, the pages resets to Home page.<br />
+        For this experiment, I have used the following credentials:<br />
+        <ul>
+            <li>
+                Email: admin@xyz.com,
+                Password: admin
+            </li>
+            <li>
+                Email: student@xyz.com,
+                Password: student
+            </li>
+            <li>
+                Email: faculty@xyz.com,
+                Password: faculty
+            </li>
+        </ul>
+    </p>
+    
+    <hr />
+    <h4><b>Code Snippet</b></h4>
+    <p>Javacript code</p>
+    <pre>
+app.controller("ProfileController", function ($scope, UserService, $routeParams, CourseService) {
+    var email = $routeParams.email;
+    $scope.currentuser = UserService.getcurrentuser();
+    $scope.email = email;
+    if($scope.currentuser.role == "faculty")
+    {
+        $scope.authoring = CourseService.getcouseByIndices($scope.currentuser.authoring);
+        $scope.teaching = CourseService.getcouseByIndices($scope.currentuser.teaching);
+        
+    }
+    else if ($scope.currentuser.role == "student")
+    {
+        $scope.registered = CourseService.getcouseByIndices($scope.currentuser.registered);
+    }
+    
+    $scope.removeCourse = function (list, index) {
+        
+               CourseService.removeCourseByIndex(list, index);
+    };
+});
+
+app.factory("CourseService", function () {
+        var removeCourseByIndex = function (indices, index)
+    {
+        
+        return indices.splice(index, 1);
+    }
+        return {
+        removeCourseByIndex: removeCourseByIndex
+    }
+})
+
+
+</pre>
+    <hr />
+    <h4><b>Source Code</b></h4>
+    <a href="../../fileview/Default.aspx?~/experiments/week7/002.html" target="_blank">View HTML Source Code</a><br />
+    <a href="../../fileview/Default.aspx?~/experiments/week7/002.js" target="_blank">View JS Source Code</a><br />
+    <a href="../../fileview/Default.aspx?~/experiments/week7/ngRouting/002profile.js" target="_blank">View Profile Code</a><br />
+    <hr />
+    <h4><b>References</b></h4>
+    <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a><br />
+    <a href="https://www.youtube.com/user/jannunzi/videos" target="_blank">Prof. Jose's Video</a><br />
+    <hr />
+</body>
+</html>

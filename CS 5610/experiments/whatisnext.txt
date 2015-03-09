@@ -3,3 +3,5 @@
 ../story/index.htm?../experiments/bootsrap/story.txt Week 3: Bootsrap
 ../story/index.htm?../experiments/javascript/story.txt Week 4: jQuery
 ../story/index.htm?../experiments/AngularJS/story.txt Week 5: AngularJS
+../story/index.htm?../experiments/week6/story.txt Week 6: Web APIs
+../story/index.htm?../experiments/week7/story.txt Week 7: AngularJS Routing

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Google Maps</title>
+    <meta charset="UTF-8">
+    <title>Week 5 Experiment</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/custom.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+    <script src="googlemap.js"></script>
+
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Google Maps</h1><br /><hr />
+        <h2>About the Experiment</h2>
+        <p>In this experiment, I have implemented google maps API. You can input either the zip code or address to view
+        the location.</p><hr /><br />
+        <div class="row">
+            <input id="address" type="text" value="02135" autofocus />
+            <input type="button" class="btn btn-primary" value="Zip or Address" onclick="codeAddress()" /><br /><br />
+
+            <div id="googleMap" style="width: 1000px; height: 600px;"></div>
+            
+
+        </div><br />
+        <hr />
+        <h4><b>Source Code</b></h4>
+        <p>
+            Javascript Code:
+        </p>
+        <pre>
+          $("document").ready(function () {
+    geo = new google.maps.Geocoder();
+    var latlong = new google.maps.LatLng(42, -73);
+    var mapOptions = {
+        zoom: 8,
+        center: latlong
+    }
+    map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+});
+function codeAddress() {
+    var address = document.getElementById('address').value;
+    geo.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+        } else {
+            alert('Geocode unsuccessful for the following reason: ' + status);
+        }
+    });
+}
+</pre>
+        <hr />
+        <h4><b>Source Code</b></h4>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/googlemap.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/week6/googlemap.js" target="_blank">View JS Source Code</a><br />
+        <hr />
+        <h4><b>References</b></h4>
+        <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a><br />
+        <a href="http://tilotiti.github.io/jQuery-Google-Map/" target="_blank">Google Map</a><br />
+        <hr />
+    </div>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+﻿../../story/whatisnext.htm?../experiments/week7/whatisnext.txt Week 7
+000.html Login Page
+001.html Course Page
+002.html RemoveCourse Function
+003.html Add course function

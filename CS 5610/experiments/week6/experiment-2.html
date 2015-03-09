@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="experiment-2.js"></script>
+
+   
+</head>
+<body ng-app="MoviesApp">
+    <div ng-controller="MoviesController" class="container">
+        <h1>Movies App</h1><br /><hr /> 
+        
+        <h2>About the Experiment</h2>
+        <p>
+            In this experiment, I have a pre-defined database of movies. We can add new movies, remove existing movies from the database.
+        </p>
+        <hr /><br />
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Plot</th>
+                   <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <th><input ng-model="movie.title" class="form-control" /></th>
+                    <th><input ng-model="movie.year" class="form-control" /></th>
+                    <th><input ng-model="movie.plot" class="form-control" /></th>
+                    <th>
+                        <button ng-click="updateMovie()" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </th>
+                    <th>
+                        <button ng-click="addMovie()" class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in movies">
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.year}}</td>
+                    <td>{{movie.plot}}</td>
+                    <td>
+                        <button ng-click="selectMovie(movie)" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button ng-click="removeMovie(movie)" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <hr />
+        <h4>Code Snippet</h4>
+        <pre>
+var app = angular.module("MoviesApp", []);
+app.controller("MoviesController",
+    function ($scope, $http) {
+    var movies = [
+        { title: "Avatar", year: 2009, plot: "Some cool blue guys" },
+    {title:"starr wars", year: 2013, plot: "Some cool wars guys"},
+    {title:"star trek", year: 20010, plot: "Some cool star trek guys"},
+    ];
+    $scope.movies = movies;
+    $scope.removeMovie = function (movie)
+    {
+        var index = $scope.movies.indexOf(movie);
+        
+        $scope.movies.splice(index, 1);
+    }
+    $scope.addMovie = function ()
+    {
+        var newmovie = {
+            title: $scope.movie.title,
+            year: $scope.movie.year,
+            plot: $scope.movie.plot,
+        };
+        $scope.movies.push(newmovie);
+    }
+    $scope.selectMovie = function(movie)
+    {
+        var index = $scope.movies.indexOf(movie);
+        $scope.movie = movie;
+    }
+    $scope.updateMovie = function()
+    {
+        alert($scope.movie.title);
+    }
+});
+</pre><hr />
+        <h4><b>Source Code</b></h4>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/experiment-2.html" target="_blank">View HTML Source Code</a><br />
+        <a href="../../fileview/Default.aspx?~/experiments/week6/experiment-2.js" target="_blank">View JS Source Code</a><br />
+        <hr />
+        <h4><b>References</b></h4>
+        <a href="https://docs.angularjs.org" target="_blank">AngularJS Tutorial</a><br />
+        <a href="https://www.youtube.com/user/jannunzi/videos" target="_blank">Prof. Jose's Video</a><br />
+        <hr />
+        </div>
+    
+</body>
+</html>
