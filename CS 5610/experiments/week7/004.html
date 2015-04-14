@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="004.js"></script>
+    <script type="text/javascript" src="ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body ng-app="StarApp">
+    <div ng-controller="MainCtrl" class="container">
+        <h2>Star Rating</h2><br /><hr />
+        <h4><b>Experiment Details</b></h4>
+        <p>
+            Sometimes when we have to display ratings, displaying it in star format gives a more appealing look to the rating.
+            This experiment uses AngularJS directive to display the rating of something as star representation.
+        </p><hr />
+        <h4><b>Experiment Demo</b></h4>
+        <div class="tablediv">
+            <div class="col-sm-8">
+                <b>Rating:</b>
+                <rating class="rating" ng-model="rate1" max="5" readonly="true" on-leave="overStar = null"></rating>
+                {{rate1}}/5
+            </div>
+            <div class="col-sm-8">
+                <b>Rating:</b>
+                <rating class="rating" ng-model="rate2" max="5" readonly="true" on-leave="overStar = null"></rating>
+                {{rate2}}/5
+            </div>
+            <div class="col-sm-8">
+                <b>Rating:</b>
+                <rating class="rating" ng-model="rate3" max="5" readonly="true" on-leave="overStar = null"></rating>
+                {{rate3}}/5
+            </div>
+        </div><br /><br /><br /><br /><hr />
+        <h4><b>Code Snippet</b></h4>
+        <p>AngularJs directive</p>
+        <pre>
+app.directive('rate', function () {
+    return {
+        restrict: 'A',
+        template: '&lt;ul class="rating"&gt;' +
+        '&lt;li ng-repeat="star in stars" ng-class="star"&gt;' +
+        '\u2605' +
+        '&lt;/li&gt;' +
+        '&lt;/ul&gt;',
+        scope: {
+            ratingValue: '=',
+            max: '='
+        },
+        link: function (scope, elem, attrs) {
+            scope.stars = [];
+            for (var i = 0; i < scope.max; i++) {
+                scope.stars.push({
+                    filled: i < scope.ratingValue
+                });
+            }
+        }
+    }
+});
+</pre>
+
+        <p>This is used in HTML code as follows:</p>
+        <pre>
+        &lt;rating class="rating" ng-model="rate3" max="5" readonly="true" on-leave="overStar = null"&gt;&lt;/rating&gt;
+</pre><hr />
+        <h4><b>Source Code</b></h4>
+        <a href="" target="_blank">HTML Code</a><br />
+        <a href="" target="_blank">Controller Code</a>
+        <hr />
+        <h4><b>References</b></h4>
+        <a href="https://angular-ui.github.io/bootstrap/">Star Rating</a>
+        <hr />
+    </div>
+</body>
+</html>

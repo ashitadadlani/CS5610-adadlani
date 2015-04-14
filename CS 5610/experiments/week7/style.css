@@ -1,0 +1,24 @@
+﻿.rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  
+  
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    text-shadow: .05em .05em #aaa;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+    
+      color: #fd0; //#21568b
+   
+}
+
+.tablediv{
+    padding-top: 50px;
+    padding-left: 300px;
+    padding-bottom: 50px;
+    font-size:14px;
+}
