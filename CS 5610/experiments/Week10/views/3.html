@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/angular.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/angular-route.js" type="text/javascript"></script>
+    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/3.js"></script>
+    <link href="../css/style.css" rel="stylesheet" />
+</head>
+<body ng-app="CarsApp">
+    <div class="container">
+        <h1>Creating Dropdowns</h1><br /><hr />
+        <h3>About the Experiment</h3>
+        <p>In this experiment, I have created a dropdown. When we click on 'Search by Makes', all the car makes get fetched. Once we select
+        the car make, Car model button gets shown and similarly, car year and styles button.</p>
+        <hr /><br />
+        <h3>Experiment Demo</h3>
+        <nav ng-controller="MainCtrl" class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="brand" class="navbar-brand active" href="#home">Car Purchasing</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#home">Home</a></li>
+
+                        <li class="dropdown">
+                            <a  data-toggle="dropdown" href="#home" ng-click="fetchMakes()">Search by Makes<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li class="dropdown-submenu" ng-repeat="make in makes" >
+                                    <a  tabindex="-1" class="dropdown-toggle" data-toggle="dropdown" ng-click="fetchModels(make.name)">{{make.name}}</a>
+                                    
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown" ng-show="makeName">
+                            <a data-toggle="dropdown" href="#home">Models<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu" ng-repeat="model in models">
+                                    <a tabindex="-1" class="dropdown-toggle" data-toggle="dropdown" ng-click="fetchYears(model.name, makeName)">{{model.name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" ng-show="modelName">
+                            <a data-toggle="dropdown" href="#home">Year<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu" ng-repeat="year in years">
+                                    <a tabindex="-1" class="dropdown-toggle" data-toggle="dropdown">{{year.year}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+        </nav>
+        
+        <hr />
+        <h4><b>Code Snippet</b></h4>
+        <pre>
+&lt;li class="dropdown"&gt;
+    &lt;a data-toggle="dropdown" href="#home" ng-click="fetchMakes()"&gt;Search by Makes&lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+        &lt;ul class="dropdown-menu"&gt;
+            &lt;li class="dropdown-submenu" ng-repeat="make in makes"&gt;
+                &lt;a tabindex="-1" class="dropdown-toggle" data-toggle="dropdown" ng-click="fetchModels(make.name)"&gt;{{make.name}}&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;li class="dropdown" ng-show="makeName"&gt;
+&lt;a data-toggle="dropdown" href="#home"&gt;Models&lt;span class="caret" &gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+        &lt;li class="dropdown-submenu" ng-repeat="model in models"&gt;
+            &lt;a tabindex="-1" class="dropdown-toggle" data-toggle="dropdown" ng-click="fetchYears(model.name, makeName)"&gt;{{model.name}}&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class="dropdown" ng-show="modelName"&gt;
+    &lt;a data-toggle="dropdown" href="#home"&gt;Year&lt;span class="caret" &gt;&lt;/span&gt;&lt;/a&gt;
+        &lt;ul class="dropdown-menu"&gt;
+            &lt;li class="dropdown-submenu" ng-repeat="year in years"&gt;
+                &lt;a tabindex="-1" class="dropdown-toggle" data-toggle="dropdown"&gt;{{year.year}}&lt;/a&gt;
+            &lt;/li&gt;
+       &lt;/ul&gt;
+&lt;/li&gt;
+</pre>
+        <h4><b>Source Code</b></h4>
+        <a href="../../../fileview/Default.aspx?~/experiments/Week10/views/3.html">HTML Code</a><br />
+        <a href="../../../fileview/Default.aspx?~/experiments/Week10/js/3.js">Controller Code</a><hr />
+        <h4><b>Refernces</b></h4>
+        <a href="http://developer.edmunds.com/" target="_blank">Edmunds API</a><hr />
+    </div>
+    <div ng-view>
+    </div>
+</body>
+</html>

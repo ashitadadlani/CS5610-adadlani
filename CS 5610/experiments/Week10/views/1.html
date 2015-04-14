@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/1.js"></script>
+</head>
+<body ng-app="CarsApp">
+    <div ng-controller="MainCtrl">
+        <div class="container">
+            <h1>Fetching car makes from Edmunds API</h1><br /><hr />
+            <h3>About the Experiment</h3>
+            <p>In this experiment, I am using Edmunds API to fetch the data. Here, I get the data from Edmunds vehicle API. On click of the button, all the car makes will be extracted.</p>
+            <hr />
+            
+            <h3>Experiment Demo</h3><br />
+            <button class="btn btn-primary" ng-click="fetchMakes()"> Fetch Car Makes </button>
+            <div class="row">
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr ng-repeat="make in makes">
+
+                                <td>
+                                    {{make.name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+            <h4><b>Code Snippet</b></h4>
+            <p>HTML Clde</p>
+            <pre>
+&lt;button class="btn btn-primary" ng-click="fetchMakes()"&gt; Fetch Categories &lt;/button&gt;
+&lt;div class="row"&gt;
+    &lt;div class="col-md-4"&gt;
+         &lt;table class="table table-striped"&gt;
+             &lt;tbody&gt;
+                  &lt;tr ng-repeat="make in makes"&gt;
+                       &lt;td&gt;
+                           {{make.name}}
+                       &lt;/td&gt;
+                  &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+            <p>Controller Code</p>
+            <pre>
+app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+    
+    $scope.makes = [];
+    $scope.fetchMakes = function () {
+    $http.get("http://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=chfytaj2vn952t8hy2y6qtb5")
+       .success(function (response) {
+           $scope.makes = response.makes;
+           console.log(response);
+       });
+    };
+}]);
+</pre>
+            <h4><b>Source Code</b></h4>
+            <a href="../../../fileview/Default.aspx?~/experiments/Week10/views/1.html" target="_blank">HTML Code</a><br />
+            <a href="../../../fileview/Default.aspx?~/experiments/Week10/js/1.js" target="_blank">Controller Code</a><hr />
+            <h4><b>References</b></h4>
+            <a href="http://developer.edmunds.com/" target="_blank">Edmunds API</a><hr />
+            </div>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/angular.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/angular-route.js" type="text/javascript"></script>
+    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/MainCtrl.js"></script>
+    <script type="text/javascript" src="../js/selectedNewCarStyleCtrl.js"></script>
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../fonts/glyphicons-halflings-regular.woff" />
+</head>
+<body>
+    <div class="tablediv">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" ng-show="media">
+
+            <ol class="carousel-indicators">
+                <li data-slide-to="0" class="active"></li>
+                <li data-slide-to="1"></li>
+                <li data-slide-to="2"></li>
+                <li data-slide-to="3"></li>
+            </ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active">
+                    <img src={{first}} height="100%" width="100%" />
+                </div>
+                <div class="item " ng-repeat="m in media">
+
+                    <img src={{m}} height="80%" width="100%" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

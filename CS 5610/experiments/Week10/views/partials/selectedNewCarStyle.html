@@ -1,0 +1,114 @@
+﻿body{
+padding-top: 100px;
+} 
+
+<script src="../../js/selectedNewCarStyleCtrl.js" type="text/javascript"></script>
+<link href="../../css/bootstrap.css" rel="stylesheet" />
+<link href="../css/bootstrap-theme.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+ <div class="tablediv">
+     <div id="myCarousel" class="carousel slide" data-ride="carousel" ng-show="media">
+
+         <ol class="carousel-indicators">
+             <li  data-slide-to="0" class="active"></li>
+             <li data-slide-to="1"></li>
+             <li  data-slide-to="2"></li>
+             <li data-slide-to="3"></li>
+         </ol>
+
+         <div class="carousel-inner" role="listbox" >
+
+             <div class="item active">
+                 <img src={{first}} height="100%" width="100%" />
+             </div>
+             <div class="item " ng-repeat="m in media">
+                 
+                 <img src={{m}} height="80%" width="100%" />
+             </div>
+         </div>
+
+         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+             <span class="sr-only">Previous</span>
+         </a>
+         <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+             <span class="sr-only">Next</span>
+         </a>
+             </div>
+     <br /><br />
+
+     <ul class="nav nav-tabs">
+             <li id="price">
+                 <a href="#/make/model/year" class="#price" ng-click="trueMarket()" role="button">Price</a>
+
+             </li>
+             <li id="review">
+                 <a href="#/make/model/year" class="#reviews" ng-click="getReviews()" role="button">Reviews</a>
+
+             </li>
+             <li id="consumerreview">
+                 <a href="#/make/model/year" class="#reviews" ng-click="getConsumerReviews()" role="button">Consumer Reviews</a>
+
+             </li>
+             <li id="feature"><a href="#/make/model/year" class="#features" ng-click="getMedia()" role="button">Features and Specs</a></li>
+             <li id="inventory"><a href="#/make/model/year" class="#inventory" ng-click="getInventory()" role="button">Inventory</a></li>
+         </ul>
+     <br />
+         <div id="price" ng-show="tmv">
+             <div class="row" ng-show="priceClicked">
+                 <div class="col-md-12">
+                     <table class="table ">
+                         <thead class="thead">
+                             <tr>
+                                 <th>Pricing Details</th>
+                                 <th>Price</th>
+                             </tr>
+                         </thead>
+                         <tr>
+                             <td>
+                                 BaseMSRP
+                             </td>
+                             <td>{{tmv.nationalBasePrice.baseMSRP}}</td>
+                         </tr>
+                         <tr>
+                             <td><b>Offered Price</b></td>
+                             <td>{{tmv.offerPrice}}</td>
+                         </tr>
+                     </table>
+                 </div>
+             </div>
+         </div>
+         <br />
+         <div id="review" ng-show="editorial">
+             <div ng-show="reviewClicked">
+                 <h4><b>Edmund's Review</b></h4>
+                 <h5><b>Pros</b></h5>
+                 <p>{{editorial.pros}}</p>
+                 <h5><b>Con:</b></h5>
+                 <p>{{editorial.con}}</p>
+                 <h5><b>Edmund Says..</b></h5>
+                 <p>{{editorial.edmundSays}}</p>
+                 <h5><b>Safety</b></h5>
+                 <p>{{editorial.safety}}</p>
+                 <h5><b>PowerTrain</b></h5>
+                 <p>{{editorial.powerTrain}}</p>
+                 <h5><b>What's New</b></h5>
+                 <p>{{editorial.whatsNew}}</p>
+             </div>
+         </div>
+
+         <div id="consumerreview" ng-show="consumerReviews">
+             <div ng-show="consumerReviewClicked">
+                 <h5><b>Average Customer Rating: </b>{{consumerReviews.averageRating}}</h5>
+                 <h5><b>Reviews</b></h5>
+                 <ul ng-repeat="review in consumerReviews.reviews">
+                     <li>
+
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </div>
+

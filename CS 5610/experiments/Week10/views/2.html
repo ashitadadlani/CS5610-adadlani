@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/2.js"></script>
+</head>
+<body ng-app="CarsApp">
+    <div ng-controller="MainCtrl">
+        <div class="container">
+            <h1>Fetching Car Models and Car Years</h1><br /><hr />
+            <h3>About the Experiment</h3>
+            <p>In this espeiment, when we click on 'Fetch Car Makes' button, we get all the possible car makes. On clicking 
+            a particular car make, we get all the models for this particular car make and further on clicking a car model, we can get all the car years of the model.</p>
+            <h3>Experiment Demo</h3><br />
+            <button class="btn btn-primary" ng-click="fetchMakes()"> Fetch Car Makes </button>
+            <div class="row">
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr ng-repeat="make in makes">
+
+                                <td>
+                                    <button class="btn subtitle" ng-click="fetchModels(make.name)">{{make.name}}</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr ng-repeat="model in models">
+                                <td>
+                                    <button class="btn subtitle" ng-click="fetchYears(model.name, makeName)">{{model.name}}</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4" ng-show="years">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr ng-repeat="year in years">
+                                <td>
+                                    {{year.year}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+            <hr />
+            <h4><b>Code Snippet</b></h4>
+            <p>HTML Code</p>
+            <pre>
+&lt;div class="col-md-4">
+    &lt;table class="table table-striped"&gt;
+        &lt;tbody&gt;
+            &lt;tr ng-repeat="model in models"&gt;
+                &lt;td&gt;
+                    &lt;button class="btn subtitle" ng-click="fetchYears(model.name, makeName)"&lt;gt;{{model.name}}&lt;/button&gt;
+                &lt;/td&gt;
+           &lt;/tr&gt;
+       &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="col-md-4" ng-show="years"&gt;
+    &lt;table class="table table-striped"&gt;
+        &lt;tbody&gt;
+            &lt;tr ng-repeat="year in years"&gt;
+                &lt;td&gt;
+                    {{year.year}}
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+     &lt;/table&gt;
+&lt;/div&gt;
+</pre>
+            <p>Controller Code</p>
+            <pre>
+                app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.years = [];
+    $scope.models = [];
+    $scope.fetchMakes = function () {
+        $scope.years = [];
+        $http.get("http://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=chfytaj2vn952t8hy2y6qtb5")
+       .success(function (response) {
+           $scope.makes = response.makes;
+           console.log(response);
+       });
+    };
+    $scope.makeName = '';
+    $scope.fetchModels = function (make) {
+        $scope.makeName = make;
+        $scope.years = [];
+        console.log($scope.makeName);
+        console.log(make);
+        $http.get("http://api.edmunds.com/api/vehicle/v2/" + make + "/models?fmt=json&api_key=chfytaj2vn952t8hy2y6qtb5")
+        .success(function (response) {
+            console.log(response.models);
+            $scope.models = response.models;
+        });
+    };
+    $scope.fetchYears = function (model, make) {
+        $http.get("http://api.edmunds.com/api/vehicle/v2/" + make + "/" + model + "/years?fmt=json&api_key=chfytaj2vn952t8hy2y6qtb5")
+        .success(function (response) {
+            console.log(response.years);
+            $scope.years = response.years;
+        });
+    };
+}]);
+</pre>
+            <h4><b>Source Code</b></h4>
+            <a href="../../../fileview/Default.aspx?~/experiments/Week10/views/2.html" target="_blank">HTML Code</a><br />
+            <a href="../../../fileview/Default.aspx?~/experiments/Week10/js/2.js" target="_blank">Controller Code</a><hr />
+            <h4><b>References</b></h4>
+            <a href="http://developer.edmunds.com/" target="_blank">Edmunds API</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>
